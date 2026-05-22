@@ -111,9 +111,13 @@
   }
 
   .pais-header{
-    border-radius:18px; padding:14px 16px; margin:10px 0 12px;
+    border-radius:18px; padding:14px 8px; margin:10px 0 12px;
     box-shadow:var(--sombra); position:relative; overflow:hidden;
-    display:flex; align-items:center; gap:12px;
+    display:flex; align-items:center; gap:4px;
+  }
+  .pais-centro{
+    flex:1; min-width:0; display:flex; align-items:center; gap:12px;
+    justify-content:center;
   }
   .pais-bandeira{ font-size:2.6rem; line-height:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
   .pais-grupo{
@@ -124,14 +128,24 @@
   .pais-info h2{ font-size:1.15rem; }
   .pais-info .pais-prog{ font-size:.78rem; opacity:.92; margin-top:2px; }
   .pais-barra{ position:absolute; bottom:0; left:0; height:5px; background:rgba(255,255,255,.85); transition:width .5s; }
+  /* setas de navegação no cabeçalho */
+  .seta-nav{
+    flex-shrink:0; width:38px; height:54px; border:none; cursor:pointer;
+    background:rgba(0,0,0,.16); color:inherit; border-radius:12px;
+    font-size:1.9rem; font-weight:bold; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .15s, transform .1s; padding:0;
+  }
+  .seta-nav:active{ transform:scale(.88); background:rgba(0,0,0,.32); }
 
   /* ===== Página Coca-Cola ===== */
   .coca-header{
-    flex-direction:column; align-items:center; gap:8px; padding:18px 16px 16px;
+    align-items:center; gap:4px; padding:18px 8px 16px;
     background:
       radial-gradient(circle at 50% 0%, #ff2a33 0%, #d00006 55%, #9c0004 100%) !important;
     box-shadow:0 6px 22px rgba(208,0,6,.5);
   }
+  .coca-header .pais-centro{ flex-direction:column; gap:8px; }
   .coca-header::after{
     content:""; position:absolute; inset:0;
     background:linear-gradient(180deg,rgba(255,255,255,.22) 0%,transparent 32%);
@@ -141,9 +155,10 @@
     background:#fff; border-radius:14px; padding:10px 16px;
     box-shadow:0 4px 14px rgba(0,0,0,.3); z-index:1;
   }
-  .coca-logo{ display:block; width:200px; max-width:60vw; height:auto; }
+  .coca-logo{ display:block; width:200px; max-width:52vw; height:auto; }
   .coca-header .pais-info{ text-align:center; z-index:1; }
   .coca-header .pais-grupo{ background:rgba(0,0,0,.28); }
+  .coca-header .seta-nav{ z-index:1; }
   /* grade da Coca com leve fundo vermelho */
   .album-coca{
     background:linear-gradient(180deg,rgba(208,0,6,.16),rgba(208,0,6,.04));
@@ -172,18 +187,25 @@
   }
   @keyframes brilho{ 0%{background-position:130% 130%;} 100%{background-position:-30% -30%;} }
   .fig.destaque{ box-shadow:0 0 0 2px var(--amarelo) inset, var(--sombra); }
+  /* faixa de repetidas — legível no topo, dentro da figurinha */
   .badge-rep{
-    position:absolute; top:-7px; right:-7px; background:var(--rosa); color:#fff;
-    font-size:.62rem; min-width:19px; height:19px; border-radius:10px;
-    display:flex; align-items:center; justify-content:center; padding:0 4px;
-    border:2px solid var(--fundo); z-index:2;
+    position:absolute; top:0; left:0; right:0;
+    background:var(--rosa); color:#fff;
+    font-size:.6rem; font-weight:bold; letter-spacing:.2px;
+    height:16px; line-height:16px; text-align:center;
+    border-radius:9px 9px 0 0; z-index:2;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .ctrl-rep{ display:flex; gap:4px; margin-top:3px; z-index:2; }
+  /* quando há faixa, empurra o conteúdo pra baixo pra não sobrepor */
+  .fig.tem-rep .rotulo{ margin-top:14px; }
+  .ctrl-rep{ display:flex; gap:5px; margin-top:4px; z-index:2; }
   .ctrl-rep button{
-    width:17px; height:17px; border-radius:50%; border:none;
-    background:rgba(0,0,0,.3); color:#fff; font-size:.72rem; line-height:1; cursor:pointer;
+    width:20px; height:20px; border-radius:50%; border:none;
+    background:rgba(0,0,0,.32); color:#fff; font-size:.85rem; font-weight:bold;
+    line-height:1; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
   }
+  .ctrl-rep button:active{ background:rgba(0,0,0,.5); }
 
   .vazio{ text-align:center; color:var(--texto-suave); padding:40px 20px; font-size:.9rem; }
   .vazio .emoji{ font-size:2.5rem; display:block; margin-bottom:8px; }
@@ -577,25 +599,35 @@ function renderAlbum(){
   head.className='pais-header'+(s.coca?' coca-header':'');
   head.style.background='linear-gradient(135deg,'+s.cor+' 0%, '+s.cor+'dd 55%, '+s.cor2+'66 100%)';
   head.style.color = corClara(s.cor)? '#10130f':'#ffffff';
+
+  const setaAnt = '<button class="seta-nav seta-ant" aria-label="Anterior">‹</button>';
+  const setaProx = '<button class="seta-nav seta-prox" aria-label="Próxima">›</button>';
+
   if(s.coca){
-    head.innerHTML=
+    head.innerHTML= setaAnt +
+      '<div class="pais-centro">'+
       '<div class="coca-logo-wrap"><img class="coca-logo" src="'+LOGO_COCA+'" alt="Coca-Cola"></div>'+
       '<div class="pais-info">'+
       '<div class="pais-grupo">Página especial</div>'+
       '<h2>'+s.nome+'</h2>'+
       '<div class="pais-prog">'+e.tenho+' de '+e.total+' · faltam '+e.falta+
         (e.repe?' · '+e.repe+' repetida'+(e.repe>1?'s':''):'')+'</div></div>'+
+      '</div>'+ setaProx +
       '<div class="pais-barra" style="width:'+(e.total?e.tenho/e.total*100:0)+'%"></div>';
   } else {
-    head.innerHTML=
+    head.innerHTML= setaAnt +
+      '<div class="pais-centro">'+
       '<div class="pais-bandeira">'+s.flag+'</div>'+
       '<div class="pais-info">'+
       (s.tipo==='selecao' && s.grupo ? '<div class="pais-grupo">Grupo '+s.grupo+'</div>' : '')+
       '<h2>'+s.nome+'</h2>'+
       '<div class="pais-prog">'+e.tenho+' de '+e.total+' · faltam '+e.falta+
         (e.repe?' · '+e.repe+' repetida'+(e.repe>1?'s':''):'')+'</div></div>'+
+      '</div>'+ setaProx +
       '<div class="pais-barra" style="width:'+(e.total?e.tenho/e.total*100:0)+'%"></div>';
   }
+  head.querySelector('.seta-ant').onclick=()=>navegarSecao(-1);
+  head.querySelector('.seta-prox').onclick=()=>navegarSecao(1);
   cont.appendChild(head);
 
   const tot=qtdSecao(s);
@@ -644,7 +676,9 @@ function criarFig(si,n,sel){
                 '<div class="ico">'+ico+'</div>';
 
   if(q>1){
-    const b=document.createElement('div'); b.className='badge-rep'; b.textContent='+'+(q-1);
+    div.classList.add('tem-rep');
+    const b=document.createElement('div'); b.className='badge-rep';
+    b.textContent='TENHO +'+(q-1);
     div.appendChild(b);
     const c=document.createElement('div'); c.className='ctrl-rep';
     const menos=document.createElement('button'); menos.textContent='−';
@@ -799,6 +833,17 @@ function irParaSecao(i){
   abrirBusca(false);
   window.scrollTo({top:0,behavior:'smooth'});
   toast('▶ '+estado.selecoes[i].nome);
+}
+
+function navegarSecao(d){
+  const n=estado.selecoes.length;
+  abaAtiva=(abaAtiva+d+n)%n;   // circular: do último volta ao primeiro
+  render();
+  // centraliza a aba ativa na barra de cima
+  const abas=document.getElementById('abas');
+  const ativa=abas.querySelector('.aba.ativa');
+  if(ativa) ativa.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  toast(estado.selecoes[abaAtiva].nome);
 }
 
 function renderBuscaLista(termo){

@@ -298,6 +298,11 @@
   .busca-item:active{ background:var(--card-2); }
   .busca-item .bi-flag{ font-size:1.15rem; }
   .busca-item .bi-prog{ margin-left:auto; font-size:.72rem; color:var(--texto-suave); }
+  .busca-item .bi-sigla{
+    display:inline-block; font-size:.64rem; font-weight:bold;
+    background:var(--card-2); color:var(--texto-suave);
+    padding:1px 6px; border-radius:6px; margin-left:5px; letter-spacing:.5px;
+  }
   .busca-item.atual-item{ background:var(--card-2); }
   .busca-vazio{ padding:18px 14px; text-align:center; color:var(--texto-suave); font-size:.85rem; }
 
@@ -334,7 +339,7 @@
   </button>
   <div class="busca-painel" id="buscaPainel">
     <div class="busca-input-wrap">
-      <input class="busca-input" id="buscaInput" placeholder="Digite uma seleção ou seção...">
+      <input class="busca-input" id="buscaInput" placeholder="Nome ou sigla (ex: Brasil, BRA, arabia)...">
     </div>
     <div id="buscaLista"></div>
   </div>
@@ -428,66 +433,66 @@ const PADRAO = [
   {nome:'Abertura FIFA World Cup', flag:'🏆', tipo:'especial', cor:'#7a5c00', cor2:'#ffce1f',
    codigos:['00','FCW 1','FCW 2','FCW 3','FCW 4','FCW 5','FCW 6','FCW 7','FCW 8']},
 
-  // ---- 48 SELEÇÕES (grupos A a L) ----
-  {nome:'México',         flag:'🇲🇽', tipo:'selecao', grupo:'A', cor:'#006847', cor2:'#ce1126'},
-  {nome:'África do Sul',  flag:'🇿🇦', tipo:'selecao', grupo:'A', cor:'#007a4d', cor2:'#ffb612'},
-  {nome:'Coreia do Sul',  flag:'🇰🇷', tipo:'selecao', grupo:'A', cor:'#0047a0', cor2:'#cd2e3a'},
-  {nome:'Rep. Tcheca',    flag:'🇨🇿', tipo:'selecao', grupo:'A', cor:'#11457e', cor2:'#d7141a'},
+  // ---- 48 SELEÇÕES (ordem oficial do álbum Panini, grupos A a L) ----
+  {nome:'México',         sigla:'MEX', flag:'🇲🇽', tipo:'selecao', grupo:'A', cor:'#006847', cor2:'#ce1126'},
+  {nome:'África do Sul',  sigla:'RSA', flag:'🇿🇦', tipo:'selecao', grupo:'A', cor:'#007a4d', cor2:'#ffb612'},
+  {nome:'Coreia do Sul',  sigla:'KOR', flag:'🇰🇷', tipo:'selecao', grupo:'A', cor:'#0047a0', cor2:'#cd2e3a'},
+  {nome:'Rep. Tcheca',    sigla:'CZE', flag:'🇨🇿', tipo:'selecao', grupo:'A', cor:'#11457e', cor2:'#d7141a'},
 
-  {nome:'Canadá',         flag:'🇨🇦', tipo:'selecao', grupo:'B', cor:'#d52b1e', cor2:'#ffffff'},
-  {nome:'Catar',          flag:'🇶🇦', tipo:'selecao', grupo:'B', cor:'#8a1538', cor2:'#ffffff'},
-  {nome:'Suíça',          flag:'🇨🇭', tipo:'selecao', grupo:'B', cor:'#d52b1e', cor2:'#ffffff'},
-  {nome:'Bósnia',         flag:'🇧🇦', tipo:'selecao', grupo:'B', cor:'#002395', cor2:'#fecb00'},
+  {nome:'Canadá',         sigla:'CAN', flag:'🇨🇦', tipo:'selecao', grupo:'B', cor:'#d52b1e', cor2:'#ffffff'},
+  {nome:'Bósnia',         sigla:'BIH', flag:'🇧🇦', tipo:'selecao', grupo:'B', cor:'#002395', cor2:'#fecb00'},
+  {nome:'Catar',          sigla:'QAT', flag:'🇶🇦', tipo:'selecao', grupo:'B', cor:'#8a1538', cor2:'#ffffff'},
+  {nome:'Suíça',          sigla:'SUI', flag:'🇨🇭', tipo:'selecao', grupo:'B', cor:'#d52b1e', cor2:'#ffffff'},
 
-  {nome:'Brasil',         flag:'🇧🇷', tipo:'selecao', grupo:'C', cor:'#009c3b', cor2:'#ffdf00'},
-  {nome:'Marrocos',       flag:'🇲🇦', tipo:'selecao', grupo:'C', cor:'#c1272d', cor2:'#006233'},
-  {nome:'Escócia',        flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', tipo:'selecao', grupo:'C', cor:'#0065bd', cor2:'#ffffff'},
-  {nome:'Haiti',          flag:'🇭🇹', tipo:'selecao', grupo:'C', cor:'#00209f', cor2:'#d21034'},
+  {nome:'Brasil',         sigla:'BRA', flag:'🇧🇷', tipo:'selecao', grupo:'C', cor:'#009c3b', cor2:'#ffdf00'},
+  {nome:'Marrocos',       sigla:'MAR', flag:'🇲🇦', tipo:'selecao', grupo:'C', cor:'#c1272d', cor2:'#006233'},
+  {nome:'Haiti',          sigla:'HAI', flag:'🇭🇹', tipo:'selecao', grupo:'C', cor:'#00209f', cor2:'#d21034'},
+  {nome:'Escócia',        sigla:'SCO', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', tipo:'selecao', grupo:'C', cor:'#0065bd', cor2:'#ffffff'},
 
-  {nome:'Estados Unidos', flag:'🇺🇸', tipo:'selecao', grupo:'D', cor:'#3c3b6e', cor2:'#b22234'},
-  {nome:'Paraguai',       flag:'🇵🇾', tipo:'selecao', grupo:'D', cor:'#d52b1e', cor2:'#0038a8'},
-  {nome:'Turquia',        flag:'🇹🇷', tipo:'selecao', grupo:'D', cor:'#e30a17', cor2:'#ffffff'},
-  {nome:'Austrália',      flag:'🇦🇺', tipo:'selecao', grupo:'D', cor:'#00843d', cor2:'#ffcd00'},
+  {nome:'Estados Unidos', sigla:'USA', flag:'🇺🇸', tipo:'selecao', grupo:'D', cor:'#3c3b6e', cor2:'#b22234'},
+  {nome:'Paraguai',       sigla:'PAR', flag:'🇵🇾', tipo:'selecao', grupo:'D', cor:'#d52b1e', cor2:'#0038a8'},
+  {nome:'Austrália',      sigla:'AUS', flag:'🇦🇺', tipo:'selecao', grupo:'D', cor:'#00843d', cor2:'#ffcd00'},
+  {nome:'Turquia',        sigla:'TUR', flag:'🇹🇷', tipo:'selecao', grupo:'D', cor:'#e30a17', cor2:'#ffffff'},
 
-  {nome:'Alemanha',       flag:'🇩🇪', tipo:'selecao', grupo:'E', cor:'#1a1a1a', cor2:'#dd0000'},
-  {nome:'Equador',        flag:'🇪🇨', tipo:'selecao', grupo:'E', cor:'#ffd100', cor2:'#0072ce'},
-  {nome:'Costa do Marfim',flag:'🇨🇮', tipo:'selecao', grupo:'E', cor:'#ff8200', cor2:'#009e60'},
-  {nome:'Curaçao',        flag:'🇨🇼', tipo:'selecao', grupo:'E', cor:'#002b7f', cor2:'#f9e814'},
+  {nome:'Alemanha',       sigla:'GER', flag:'🇩🇪', tipo:'selecao', grupo:'E', cor:'#1a1a1a', cor2:'#dd0000'},
+  {nome:'Curaçao',        sigla:'CUW', flag:'🇨🇼', tipo:'selecao', grupo:'E', cor:'#002b7f', cor2:'#f9e814'},
+  {nome:'Costa do Marfim',sigla:'CIV', flag:'🇨🇮', tipo:'selecao', grupo:'E', cor:'#ff8200', cor2:'#009e60'},
+  {nome:'Equador',        sigla:'ECU', flag:'🇪🇨', tipo:'selecao', grupo:'E', cor:'#ffd100', cor2:'#0072ce'},
 
-  {nome:'Países Baixos',  flag:'🇳🇱', tipo:'selecao', grupo:'F', cor:'#ff6200', cor2:'#21468b'},
-  {nome:'Japão',          flag:'🇯🇵', tipo:'selecao', grupo:'F', cor:'#1d3a8a', cor2:'#bc002d'},
-  {nome:'Suécia',         flag:'🇸🇪', tipo:'selecao', grupo:'F', cor:'#006aa7', cor2:'#fecc00'},
-  {nome:'Tunísia',        flag:'🇹🇳', tipo:'selecao', grupo:'F', cor:'#e70013', cor2:'#ffffff'},
+  {nome:'Países Baixos',  sigla:'NED', flag:'🇳🇱', tipo:'selecao', grupo:'F', cor:'#ff6200', cor2:'#21468b'},
+  {nome:'Japão',          sigla:'JPN', flag:'🇯🇵', tipo:'selecao', grupo:'F', cor:'#1d3a8a', cor2:'#bc002d'},
+  {nome:'Suécia',         sigla:'SWE', flag:'🇸🇪', tipo:'selecao', grupo:'F', cor:'#006aa7', cor2:'#fecc00'},
+  {nome:'Tunísia',        sigla:'TUN', flag:'🇹🇳', tipo:'selecao', grupo:'F', cor:'#e70013', cor2:'#ffffff'},
 
-  {nome:'Bélgica',        flag:'🇧🇪', tipo:'selecao', grupo:'G', cor:'#c8102e', cor2:'#fdda24'},
-  {nome:'Irã',            flag:'🇮🇷', tipo:'selecao', grupo:'G', cor:'#239f40', cor2:'#da0000'},
-  {nome:'Egito',          flag:'🇪🇬', tipo:'selecao', grupo:'G', cor:'#c8102e', cor2:'#1a1a1a'},
-  {nome:'Nova Zelândia',  flag:'🇳🇿', tipo:'selecao', grupo:'G', cor:'#00247d', cor2:'#cc142b'},
+  {nome:'Bélgica',        sigla:'BEL', flag:'🇧🇪', tipo:'selecao', grupo:'G', cor:'#c8102e', cor2:'#fdda24'},
+  {nome:'Egito',          sigla:'EGY', flag:'🇪🇬', tipo:'selecao', grupo:'G', cor:'#c8102e', cor2:'#1a1a1a'},
+  {nome:'Irã',            sigla:'IRN', flag:'🇮🇷', tipo:'selecao', grupo:'G', cor:'#239f40', cor2:'#da0000'},
+  {nome:'Nova Zelândia',  sigla:'NZL', flag:'🇳🇿', tipo:'selecao', grupo:'G', cor:'#00247d', cor2:'#cc142b'},
 
-  {nome:'Espanha',        flag:'🇪🇸', tipo:'selecao', grupo:'H', cor:'#c60b1e', cor2:'#ffc400'},
-  {nome:'Uruguai',        flag:'🇺🇾', tipo:'selecao', grupo:'H', cor:'#5b9fd6', cor2:'#001489'},
-  {nome:'Arábia Saudita', flag:'🇸🇦', tipo:'selecao', grupo:'H', cor:'#006c35', cor2:'#ffffff'},
-  {nome:'Cabo Verde',     flag:'🇨🇻', tipo:'selecao', grupo:'H', cor:'#003893', cor2:'#f7d116'},
+  {nome:'Espanha',        sigla:'ESP', flag:'🇪🇸', tipo:'selecao', grupo:'H', cor:'#c60b1e', cor2:'#ffc400'},
+  {nome:'Cabo Verde',     sigla:'CPV', flag:'🇨🇻', tipo:'selecao', grupo:'H', cor:'#003893', cor2:'#f7d116'},
+  {nome:'Arábia Saudita', sigla:'KSA', flag:'🇸🇦', tipo:'selecao', grupo:'H', cor:'#006c35', cor2:'#ffffff'},
+  {nome:'Uruguai',        sigla:'URU', flag:'🇺🇾', tipo:'selecao', grupo:'H', cor:'#5b9fd6', cor2:'#001489'},
 
-  {nome:'França',         flag:'🇫🇷', tipo:'selecao', grupo:'I', cor:'#0055a4', cor2:'#ef4135'},
-  {nome:'Senegal',        flag:'🇸🇳', tipo:'selecao', grupo:'I', cor:'#00853f', cor2:'#fdef42'},
-  {nome:'Noruega',        flag:'🇳🇴', tipo:'selecao', grupo:'I', cor:'#ba0c2f', cor2:'#00205b'},
-  {nome:'Iraque',         flag:'🇮🇶', tipo:'selecao', grupo:'I', cor:'#1a1a1a', cor2:'#ce1126'},
+  {nome:'França',         sigla:'FRA', flag:'🇫🇷', tipo:'selecao', grupo:'I', cor:'#0055a4', cor2:'#ef4135'},
+  {nome:'Senegal',        sigla:'SEN', flag:'🇸🇳', tipo:'selecao', grupo:'I', cor:'#00853f', cor2:'#fdef42'},
+  {nome:'Iraque',         sigla:'IRQ', flag:'🇮🇶', tipo:'selecao', grupo:'I', cor:'#1a1a1a', cor2:'#ce1126'},
+  {nome:'Noruega',        sigla:'NOR', flag:'🇳🇴', tipo:'selecao', grupo:'I', cor:'#ba0c2f', cor2:'#00205b'},
 
-  {nome:'Argentina',      flag:'🇦🇷', tipo:'selecao', grupo:'J', cor:'#6caddf', cor2:'#ffffff'},
-  {nome:'Áustria',        flag:'🇦🇹', tipo:'selecao', grupo:'J', cor:'#ed2939', cor2:'#ffffff'},
-  {nome:'Argélia',        flag:'🇩🇿', tipo:'selecao', grupo:'J', cor:'#006233', cor2:'#d21034'},
-  {nome:'Jordânia',       flag:'🇯🇴', tipo:'selecao', grupo:'J', cor:'#007a3d', cor2:'#ce1126'},
+  {nome:'Argentina',      sigla:'ARG', flag:'🇦🇷', tipo:'selecao', grupo:'J', cor:'#6caddf', cor2:'#ffffff'},
+  {nome:'Argélia',        sigla:'ALG', flag:'🇩🇿', tipo:'selecao', grupo:'J', cor:'#006233', cor2:'#d21034'},
+  {nome:'Áustria',        sigla:'AUT', flag:'🇦🇹', tipo:'selecao', grupo:'J', cor:'#ed2939', cor2:'#ffffff'},
+  {nome:'Jordânia',       sigla:'JOR', flag:'🇯🇴', tipo:'selecao', grupo:'J', cor:'#007a3d', cor2:'#ce1126'},
 
-  {nome:'Portugal',       flag:'🇵🇹', tipo:'selecao', grupo:'K', cor:'#006600', cor2:'#da291c'},
-  {nome:'Colômbia',       flag:'🇨🇴', tipo:'selecao', grupo:'K', cor:'#fcd116', cor2:'#003893'},
-  {nome:'Uzbequistão',    flag:'🇺🇿', tipo:'selecao', grupo:'K', cor:'#1eb53a', cor2:'#0099b5'},
-  {nome:'RD Congo',       flag:'🇨🇩', tipo:'selecao', grupo:'K', cor:'#007fff', cor2:'#f7d518'},
+  {nome:'Portugal',       sigla:'POR', flag:'🇵🇹', tipo:'selecao', grupo:'K', cor:'#006600', cor2:'#da291c'},
+  {nome:'RD Congo',       sigla:'COD', flag:'🇨🇩', tipo:'selecao', grupo:'K', cor:'#007fff', cor2:'#f7d518'},
+  {nome:'Uzbequistão',    sigla:'UZB', flag:'🇺🇿', tipo:'selecao', grupo:'K', cor:'#1eb53a', cor2:'#0099b5'},
+  {nome:'Colômbia',       sigla:'COL', flag:'🇨🇴', tipo:'selecao', grupo:'K', cor:'#fcd116', cor2:'#003893'},
 
-  {nome:'Inglaterra',     flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', tipo:'selecao', grupo:'L', cor:'#1d3a8a', cor2:'#cf142b'},
-  {nome:'Croácia',        flag:'🇭🇷', tipo:'selecao', grupo:'L', cor:'#c8102e', cor2:'#1d3a8a'},
-  {nome:'Gana',           flag:'🇬🇭', tipo:'selecao', grupo:'L', cor:'#006b3f', cor2:'#fcd116'},
-  {nome:'Panamá',         flag:'🇵🇦', tipo:'selecao', grupo:'L', cor:'#005293', cor2:'#d21034'},
+  {nome:'Inglaterra',     sigla:'ENG', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', tipo:'selecao', grupo:'L', cor:'#1d3a8a', cor2:'#cf142b'},
+  {nome:'Croácia',        sigla:'CRO', flag:'🇭🇷', tipo:'selecao', grupo:'L', cor:'#c8102e', cor2:'#1d3a8a'},
+  {nome:'Gana',           sigla:'GHA', flag:'🇬🇭', tipo:'selecao', grupo:'L', cor:'#006b3f', cor2:'#fcd116'},
+  {nome:'Panamá',         sigla:'PAN', flag:'🇵🇦', tipo:'selecao', grupo:'L', cor:'#005293', cor2:'#d21034'},
 
   // ---- ESPECIAIS FINAIS: FIFA World Cup (FCW 9 a FCW 19 = 11) ----
   {nome:'Especiais FIFA World Cup', flag:'✨', tipo:'especial', cor:'#7a5c00', cor2:'#ffce1f',
@@ -507,6 +512,40 @@ function carregar(){
   try{ const d=localStorage.getItem('albumCopa2026v3'); if(d) estado=JSON.parse(d); }catch(e){}
   if(!estado.selecoes || !estado.selecoes.length) estado.selecoes = JSON.parse(JSON.stringify(PADRAO));
   if(!estado.figs) estado.figs = {};
+  migrarParaPadraoAtual();
+}
+
+/* Atualiza a ordem das seleções/seções para a do PADRAO atual,
+   preservando marcações pelo nome da seção (chave estável). */
+function migrarParaPadraoAtual(){
+  // Mapa nome -> marcações antigas (chave "n" -> quantidade)
+  const marcacoesPorNome = {};
+  estado.selecoes.forEach((s, idxAntigo) => {
+    const m = {};
+    const tot = qtdSecao(s);
+    for(let n=1; n<=tot; n++){
+      const q = estado.figs[idxAntigo+'-'+n];
+      if(q) m[n] = q;
+    }
+    marcacoesPorNome[s.nome] = m;
+  });
+  // Adota a nova ordem (PADRAO) e preserva siglas/cores atualizadas
+  const novas = JSON.parse(JSON.stringify(PADRAO));
+  // Mantém seções customizadas que o usuário criou mas que não estão no PADRAO
+  estado.selecoes.forEach(s => {
+    if(!novas.some(n => n.nome === s.nome)) novas.push(s);
+  });
+  // Reconstrói o dicionário de figs com os novos índices
+  const novasFigs = {};
+  novas.forEach((s, idxNovo) => {
+    const m = marcacoesPorNome[s.nome];
+    if(m){
+      Object.keys(m).forEach(n => { novasFigs[idxNovo+'-'+n] = m[n]; });
+    }
+  });
+  estado.selecoes = novas;
+  estado.figs = novasFigs;
+  salvar();
 }
 
 /* ===================== HELPERS ===================== */
@@ -619,7 +658,7 @@ function renderAlbum(){
       '<div class="pais-centro">'+
       '<div class="pais-bandeira">'+s.flag+'</div>'+
       '<div class="pais-info">'+
-      (s.tipo==='selecao' && s.grupo ? '<div class="pais-grupo">Grupo '+s.grupo+'</div>' : '')+
+      (s.tipo==='selecao' && s.grupo ? '<div class="pais-grupo">Grupo '+s.grupo+(s.sigla?' · '+s.sigla:'')+'</div>' : '')+
       '<h2>'+s.nome+'</h2>'+
       '<div class="pais-prog">'+e.tenho+' de '+e.total+' · faltam '+e.falta+
         (e.repe?' · '+e.repe+' repetida'+(e.repe>1?'s':''):'')+'</div></div>'+
@@ -846,10 +885,14 @@ function navegarSecao(d){
   toast(estado.selecoes[abaAtiva].nome);
 }
 
+function semAcento(s){
+  return (s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+}
+
 function renderBuscaLista(termo){
   const lista=document.getElementById('buscaLista');
   lista.innerHTML='';
-  const t=(termo||'').toLowerCase().trim();
+  const t=semAcento(termo).trim();
 
   const selecoes=[], especiais=[];
   estado.selecoes.forEach((s,i)=>{
@@ -857,7 +900,10 @@ function renderBuscaLista(termo){
   });
   selecoes.sort((a,b)=>a.s.nome.localeCompare(b.s.nome,'pt'));
 
-  const filtra = arr => arr.filter(x=>x.s.nome.toLowerCase().includes(t));
+  const filtra = arr => arr.filter(x=>{
+    const alvo = semAcento(x.s.nome) + ' ' + semAcento(x.s.sigla||'');
+    return alvo.includes(t);
+  });
   const selF=filtra(selecoes), espF=filtra(especiais);
 
   function montaItem(item){
@@ -865,8 +911,9 @@ function renderBuscaLista(termo){
     const div=document.createElement('div');
     div.className='busca-item'+(item.i===abaAtiva?' atual-item':'');
     const grupo = (item.s.tipo==='selecao' && item.s.grupo) ? ' · Grupo '+item.s.grupo : '';
+    const sigla = item.s.sigla ? ' <span class="bi-sigla">'+item.s.sigla+'</span>' : '';
     div.innerHTML='<span class="bi-flag">'+item.s.flag+'</span>'+
-      '<span>'+item.s.nome+grupo+'</span>'+
+      '<span>'+item.s.nome+sigla+grupo+'</span>'+
       '<span class="bi-prog">'+e.tenho+'/'+e.total+'</span>';
     div.onclick=()=>irParaSecao(item.i);
     return div;

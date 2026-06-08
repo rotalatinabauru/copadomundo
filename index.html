@@ -251,6 +251,115 @@
     width:32px; height:36px; cursor:pointer; flex-shrink:0; font-size:1rem;
   }
 
+  /* ===== Página FALTAM ===== */
+  .faltam-hero{
+    background:linear-gradient(135deg, #1a3528 0%, #00734a 60%, #2bdd8c 100%);
+    border-radius:18px; padding:18px 16px; text-align:center;
+    box-shadow:var(--sombra); position:relative; overflow:hidden;
+    margin-bottom:12px;
+  }
+  .faltam-hero::after{
+    content:"📋"; position:absolute; font-size:120px;
+    right:-22px; top:-30px; opacity:.08; transform:rotate(-12deg);
+  }
+  .faltam-hero-num{
+    font-size:3.2rem; font-weight:bold; color:#fff; line-height:1;
+    letter-spacing:-1px;
+  }
+  .faltam-hero-tot{ font-size:1.4rem; opacity:.55; font-weight:bold; }
+  .faltam-hero-label{
+    color:#fff; font-size:.85rem; opacity:.92; margin-top:2px;
+    text-transform:uppercase; letter-spacing:1.5px;
+  }
+  .faltam-hero-barra{
+    height:10px; background:rgba(0,0,0,.28); border-radius:8px;
+    overflow:hidden; margin:14px 0 6px;
+  }
+  .faltam-hero-barra > div{
+    height:100%; background:linear-gradient(90deg,var(--amarelo),#ffe98a);
+    border-radius:8px; transition:width .5s cubic-bezier(.34,1.4,.5,1);
+    box-shadow:0 0 10px rgba(255,206,31,.6); width:0%;
+  }
+  .faltam-hero-pct{ color:#fff; font-size:.8rem; opacity:.95; }
+  .faltam-hero-pct span{ color:var(--amarelo); font-weight:bold; }
+
+  .faltam-filtros{ display:flex; gap:6px; margin-bottom:10px; }
+  .faltam-filtro{
+    flex:1; padding:9px 12px; border-radius:12px; border:2px solid var(--card-2);
+    background:var(--card); color:var(--texto-suave);
+    font-family:inherit; font-size:.82rem; font-weight:bold; cursor:pointer;
+  }
+  .faltam-filtro.ativo{ background:var(--verde); color:#062b1c; border-color:var(--verde); }
+
+  .faltam-dica{
+    font-size:.74rem; color:var(--texto-suave); background:var(--card-2);
+    border-radius:10px; padding:8px 12px; margin-bottom:12px; border-left:3px solid var(--amarelo);
+  }
+
+  .faltam-card{
+    background:var(--card); border-radius:16px; margin-bottom:10px;
+    overflow:hidden; box-shadow:var(--sombra);
+  }
+  .faltam-card-head{
+    padding:11px 14px; display:flex; align-items:center; gap:10px;
+    position:relative; cursor:pointer;
+  }
+  .faltam-card-head .fc-flag{ font-size:1.8rem; line-height:1; flex-shrink:0;
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+  .faltam-card-head .fc-meio{ flex:1; min-width:0; }
+  .faltam-card-head .fc-nome{
+    font-size:1rem; font-weight:bold; color:#fff; display:flex;
+    align-items:center; gap:7px; flex-wrap:wrap; line-height:1.15;
+  }
+  .faltam-card-head .fc-sigla{
+    font-size:.62rem; font-weight:bold; background:rgba(0,0,0,.32);
+    color:#fff; padding:2px 7px; border-radius:6px; letter-spacing:.6px;
+  }
+  .faltam-card-head .fc-grupo{
+    font-size:.62rem; font-weight:bold; background:rgba(255,255,255,.18);
+    color:#fff; padding:2px 7px; border-radius:6px; letter-spacing:.6px;
+  }
+  .faltam-card-head .fc-status{
+    font-size:.72rem; color:#fff; opacity:.92; margin-top:1px;
+  }
+  .faltam-card-head .fc-mini-barra{
+    position:absolute; bottom:0; left:0; height:3px;
+    background:rgba(255,255,255,.85); transition:width .5s;
+  }
+
+  .faltam-card-corpo{ padding:10px 12px 12px; }
+  .faltam-chips{
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .chip-falta{
+    min-width:42px; padding:7px 9px; border-radius:9px;
+    background:var(--fundo-2); border:1.5px dashed var(--borda-falta);
+    color:var(--texto); font-weight:bold; font-size:.85rem;
+    cursor:pointer; transition:all .14s; user-select:none;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; line-height:1;
+  }
+  .chip-falta.especial{ font-size:.74rem; padding:7px 8px; letter-spacing:.3px; }
+  .chip-falta.destaque{
+    border-style:solid; border-color:var(--amarelo);
+    background:linear-gradient(160deg,rgba(255,206,31,.12),rgba(255,206,31,.04));
+  }
+  .chip-falta:active{ transform:scale(.9); background:var(--verde); color:#fff; border-color:var(--verde); }
+
+  .faltam-completa{
+    padding:14px; text-align:center; color:var(--verde-claro);
+    font-weight:bold; font-size:.92rem;
+  }
+  .faltam-completa .check{ font-size:1.4rem; display:block; margin-bottom:3px; }
+
+  .faltam-vazio{
+    background:var(--card); border-radius:16px; padding:36px 20px;
+    text-align:center; color:var(--texto-suave);
+  }
+  .faltam-vazio .emoji-grande{ font-size:3.5rem; display:block; margin-bottom:10px; }
+  .faltam-vazio h3{ color:var(--verde-claro); font-size:1.1rem; margin-bottom:5px; }
+  .faltam-vazio p{ font-size:.86rem; }
+
   .nav-inf{
     position:fixed; bottom:0; left:0; right:0; background:var(--card);
     display:flex; box-shadow:0 -4px 16px rgba(0,0,0,.4);
@@ -259,9 +368,9 @@
   .nav-btn{
     flex:1; background:none; border:none; padding:8px 2px; cursor:pointer;
     display:flex; flex-direction:column; align-items:center; gap:2px;
-    color:var(--texto-suave); font-family:inherit; font-size:.66rem; font-weight:bold;
+    color:var(--texto-suave); font-family:inherit; font-size:.62rem; font-weight:bold;
   }
-  .nav-btn .nico{ font-size:1.3rem; }
+  .nav-btn .nico{ font-size:1.25rem; }
   .nav-btn.ativa{ color:var(--verde-claro); }
 
   /* ===== Menu de busca rápida ===== */
@@ -365,6 +474,24 @@
     <div id="conteudoAlbum"></div>
   </div>
 
+  <div id="viewFaltam" style="display:none;">
+    <div class="faltam-hero">
+      <div class="faltam-hero-num"><span id="faltamGrande">0</span><span class="faltam-hero-tot">/<span id="faltamTotal">0</span></span></div>
+      <div class="faltam-hero-label">figurinhas faltam</div>
+      <div class="faltam-hero-barra"><div id="faltamFill"></div></div>
+      <div class="faltam-hero-pct"><span id="faltamPct">0%</span> do álbum completo</div>
+    </div>
+
+    <div class="faltam-filtros">
+      <button class="faltam-filtro ativo" data-ff="incompletas">Só incompletas</button>
+      <button class="faltam-filtro" data-ff="todas">Mostrar tudo</button>
+    </div>
+
+    <div class="faltam-dica">💡 Toque num número faltante para marcar como <b>TENHO</b>. Toque longo abre a seleção.</div>
+
+    <div id="faltamLista"></div>
+  </div>
+
   <div id="viewTroca" style="display:none;">
     <div class="troca-box">
       <h3>🔁 Repetidas que ofereço</h3>
@@ -409,6 +536,7 @@
 
 <nav class="nav-inf">
   <button class="nav-btn ativa" data-view="album"><span class="nico">📖</span>Álbum</button>
+  <button class="nav-btn" data-view="faltam"><span class="nico">📋</span>Faltam</button>
   <button class="nav-btn" data-view="troca"><span class="nico">🔁</span>Troca</button>
   <button class="nav-btn" data-view="config"><span class="nico">⚙️</span>Configurar</button>
 </nav>
@@ -604,6 +732,7 @@ function render(){
   renderAbas();
   renderAlbum();
   renderTroca();
+  renderFaltam();
   atualizaBuscaAtual();
 }
 
@@ -749,6 +878,125 @@ function ajustar(si,n,d){
 }
 
 /* ===================== TROCA ===================== */
+/* ===================== PÁGINA FALTAM ===================== */
+let faltamFiltro = 'incompletas';
+
+function renderFaltam(){
+  const g = statsGeral(), tot = totalFigs();
+  document.getElementById('faltamGrande').textContent = g.falta;
+  document.getElementById('faltamTotal').textContent = tot;
+  const pct = tot ? Math.round(g.tenho/tot*100) : 0;
+  document.getElementById('faltamPct').textContent = pct+'%';
+  document.getElementById('faltamFill').style.width = pct+'%';
+
+  const lista = document.getElementById('faltamLista');
+  lista.innerHTML = '';
+
+  if(g.falta === 0){
+    const v = document.createElement('div');
+    v.className = 'faltam-vazio';
+    v.innerHTML = '<span class="emoji-grande">🏆</span>'+
+      '<h3>Álbum completo!</h3>'+
+      '<p>Parabéns, Érico! Você colou todas as figurinhas.</p>';
+    lista.appendChild(v);
+    return;
+  }
+
+  estado.selecoes.forEach((s, si) => {
+    const e = statsSel(si);
+    if(faltamFiltro === 'incompletas' && e.falta === 0) return;
+    lista.appendChild(criarCardFaltam(s, si, e));
+  });
+}
+
+function criarCardFaltam(s, si, e){
+  const card = document.createElement('div');
+  card.className = 'faltam-card';
+
+  // cabeçalho com cores da seleção
+  const head = document.createElement('div');
+  head.className = 'faltam-card-head';
+  head.style.background = 'linear-gradient(135deg,'+s.cor+' 0%, '+s.cor+'dd 60%, '+s.cor2+'55 100%)';
+  if(s.coca) head.style.background = 'linear-gradient(135deg,#d00006,#9c0004)';
+
+  const pctSec = e.total ? Math.round(e.tenho/e.total*100) : 0;
+  const sigla = s.sigla ? '<span class="fc-sigla">'+s.sigla+'</span>' : '';
+  const grupo = (s.tipo==='selecao' && s.grupo) ? '<span class="fc-grupo">Grupo '+s.grupo+'</span>' : '';
+  const status = e.falta === 0
+    ? '✓ Completa!'
+    : e.falta + (e.falta===1?' figurinha falta':' figurinhas faltam') + ' · '+pctSec+'%';
+
+  head.innerHTML =
+    '<div class="fc-flag">'+s.flag+'</div>'+
+    '<div class="fc-meio">'+
+      '<div class="fc-nome">'+s.nome+sigla+grupo+'</div>'+
+      '<div class="fc-status">'+status+'</div>'+
+    '</div>'+
+    '<div class="fc-mini-barra" style="width:'+pctSec+'%"></div>';
+  head.onclick = () => irParaSecao(si);
+  card.appendChild(head);
+
+  // corpo: chips com números faltantes
+  if(e.falta === 0){
+    const ok = document.createElement('div');
+    ok.className = 'faltam-completa';
+    ok.innerHTML = '<span class="check">🎉</span>Nenhuma figurinha falta nesta seção!';
+    card.appendChild(ok);
+    return card;
+  }
+
+  const corpo = document.createElement('div');
+  corpo.className = 'faltam-card-corpo';
+  const chips = document.createElement('div');
+  chips.className = 'faltam-chips';
+
+  const tot = qtdSecao(s);
+  for(let n=1; n<=tot; n++){
+    if(qtd(si, n) > 0) continue; // só faltantes
+    const chip = document.createElement('div');
+    chip.className = 'chip-falta';
+    if(s.tipo === 'especial') chip.classList.add('especial');
+    // destaque para logo (1) e time (13)
+    if(s.tipo === 'selecao' && (n === 1 || n === 13)) chip.classList.add('destaque');
+    chip.textContent = codigoFig(s, n);
+
+    // toque curto: marcar como tenho
+    chip.onclick = () => {
+      estado.figs[chave(si, n)] = 1;
+      salvar(); render();
+      toast('✓ '+codigoFig(s, n)+' marcada em '+s.nome);
+      navigator.vibrate && navigator.vibrate(20);
+    };
+    // toque longo: ir para a seleção
+    let timer;
+    chip.addEventListener('touchstart', () => {
+      timer = setTimeout(() => {
+        timer = null;
+        irParaSecao(si);
+        navigator.vibrate && navigator.vibrate(30);
+      }, 500);
+    }, {passive:true});
+    chip.addEventListener('touchend', e2 => {
+      if(timer === null) e2.preventDefault();  // evita o click do toque longo
+      clearTimeout(timer);
+    });
+    chip.addEventListener('touchmove', () => clearTimeout(timer));
+    chips.appendChild(chip);
+  }
+  corpo.appendChild(chips);
+  card.appendChild(corpo);
+  return card;
+}
+
+document.querySelectorAll('.faltam-filtro').forEach(b => {
+  b.onclick = () => {
+    faltamFiltro = b.dataset.ff;
+    document.querySelectorAll('.faltam-filtro').forEach(x => x.classList.remove('ativo'));
+    b.classList.add('ativo');
+    renderFaltam();
+  };
+});
+
 function renderTroca(){
   const reps=[], falt=[];
   estado.selecoes.forEach((s,i)=>{
@@ -959,6 +1207,7 @@ document.getElementById('buscaInput').oninput=function(){
 /* ===================== NAVEGAÇÃO ===================== */
 function trocarView(v){
   document.getElementById('viewAlbum').style.display=v==='album'?'':'none';
+  document.getElementById('viewFaltam').style.display=v==='faltam'?'':'none';
   document.getElementById('viewTroca').style.display=v==='troca'?'':'none';
   document.getElementById('viewConfig').style.display=v==='config'?'':'none';
   document.getElementById('abas').style.display=v==='album'?'flex':'none';
@@ -966,6 +1215,7 @@ function trocarView(v){
   document.querySelector('.stats').style.display=v==='config'?'none':'grid';
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('ativa',b.dataset.view===v));
   if(v==='config') renderConfig();
+  if(v==='faltam') renderFaltam();
 }
 document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>trocarView(b.dataset.view));
 document.querySelectorAll('.filtro').forEach(f=>f.onclick=()=>{
